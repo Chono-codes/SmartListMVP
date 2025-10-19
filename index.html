@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartList MVP</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery37.min.js"></script>
+</head>
+
+<body>
+    <h1>SmartList MVP</h1>
+    <p>Your ultimate task management solution.</p>
+
+    <div class="taskTable">
+        <h2>Add New Task</h2>
+
+        <div class="inputRow">
+            <input type="text" placeholder="Activity Name" required>
+
+            <select>
+                <option value="select">Choose a Subject</option>
+                <option value="eapp">EAPP</option>
+                <option value="philosophy">Philosophy</option>
+                <option value="ucsp">UCSP</option>
+                <option value="pr">Practical Research</option>
+                <option value="filipino">Filipino</option>
+                <option value="ict">ICT</option>
+                <option value="hope">HOPE</option>
+                <option value="others">Others</option>
+            </select>
+
+            <input type="text" placeholder="Subject Name">
+            <input type="date" required>
+            <button onclick="add()">Add</button>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Tasks</th>
+                <th>Subject</th>
+                <th>Deadline</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <button class="viewHistoryBtn" onclick="window.location.href='viewHistory.html'">View History</button>
+
+    <footer>
+        &copy; Team Slister, All rights reserved</a> |
+        <a href="TeamSlister.html">About Us</a> |
+        <a href="terms.html">Terms & Services</a> |
+        <a href="copyright.html">Copyright</a> |
+        <a href="privacy.html">Privacy</a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

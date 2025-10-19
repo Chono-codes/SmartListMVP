@@ -1,0 +1,413 @@
+:root {
+    --primary-color: #ff69b4;
+    --secondary-color: #800080;
+    --accent-color: #ffb6e0;
+    --text-color: #ffffff;
+    --background-card: rgba(0, 0, 0, 0.4);
+    --shadow-light: 0 4px 10px rgba(255, 255, 255, 0.1);
+    --shadow-dark: 0 0 15px rgba(0, 0, 0, 0.5);
+    --input-width-desktop: 180px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 15px 10px 25px 10px;
+    font-size: 16px;
+}
+
+h1 {
+    text-align: center;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+p {
+    text-align: center;
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    margin-top: 0;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.taskTable {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--background-card);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-dark);
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 900px;
+}
+
+.taskTable h2 {
+    text-align: left;
+    margin: 0 0 15px 0;
+    padding-bottom: 8px;
+    font-size: 1.2rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+}
+
+.inputRow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+}
+
+.taskTable input,
+.taskTable select,
+.taskTable button {
+    width: 100%;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.taskTable input,
+.taskTable select {
+    background: var(--text-color);
+    color: #333;
+    text-align: left;
+}
+
+.taskTable input:focus,
+.taskTable select:focus {
+    outline: 3px solid var(--accent-color);
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+.taskTable button {
+    background: var(--primary-color);
+    color: var(--text-color);
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.taskTable button:hover {
+    background: #ff85c1;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.task-list-container {
+    width: 100%;
+    overflow-x: auto;
+    max-width: 900px;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 15px auto;
+    text-align: left;
+    background: var(--background-card);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow-dark);
+    min-width: 600px;
+}
+
+th,
+td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+th {
+    background: rgba(0, 0, 0, 0.6);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+td:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table thead tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+}
+
+table thead tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+.viewHistoryBtn {
+    margin-top: 10px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 20px;
+    background: var(--primary-color);
+    color: var(--text-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: var(--shadow-dark);
+    text-transform: uppercase;
+}
+
+.viewHistoryBtn:hover {
+    background: #ff85c1;
+    transform: scale(1.03);
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    color: var(--text-color);
+    font-size: 0.8rem;
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+footer a:hover {
+    color: var(--text-color);
+    text-decoration: underline;
+}
+
+/* ========================= */
+/* 🌸 PAGE LOAD ANIMATIONS 🌸 */
+/* ========================= */
+
+/* Fade-in for entire page */
+body {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Smooth fade/slide-in for the task table */
+.taskTable {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUp 0.5s ease-out 0.3s forwards;
+}
+
+/* Table rows fade in one by one */
+tbody tr {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: rowFade 0.5s ease forwards;
+}
+
+tbody tr:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+tbody tr:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+tbody tr:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+tbody tr:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+tbody tr:nth-child(5) {
+    animation-delay: 0.7s;
+}
+
+/* Keyframes for animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rowFade {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 950px) {
+    .taskTable {
+        max-width: 760px;
+    }
+}
+
+@media (max-width: 650px) {
+    body {
+        padding: 10px 5px 15px 5px;
+    }
+
+    .taskTable {
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    .inputRow {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .taskTable input,
+    .taskTable select,
+    .taskTable button {
+        width: 100%;
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+
+    .task-list-container {
+        overflow-x: hidden;
+    }
+
+    table {
+        min-width: 100%;
+        width: 100%;
+        margin: 0 0 15px 0;
+        border-radius: 0;
+        box-shadow: none;
+        margin-bottom: 0;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        display: block;
+        margin-bottom: 10px;
+        padding: 10px;
+        background: var(--background-card);
+        border-radius: 8px;
+        box-shadow: var(--shadow-light);
+        border: none;
+    }
+
+    td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 5px;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+        font-size: 0.9rem;
+    }
+
+    td:last-child {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 10px;
+        border-bottom: none;
+    }
+
+    td:nth-of-type(6):before {
+        content: "";
+    }
+
+    td:last-child button {
+        flex-grow: 1;
+        margin: 0 2px;
+    }
+
+    td:before {
+        font-weight: bold;
+        color: var(--accent-color);
+        margin-right: 10px;
+        flex-basis: 30%;
+        text-align: left;
+    }
+
+    td:nth-of-type(1):before {
+        content: "No.";
+    }
+
+    td:nth-of-type(2):before {
+        content: "Task";
+    }
+
+    td:nth-of-type(3):before {
+        content: "Subject";
+    }
+
+    td:nth-of-type(4):before {
+        content: "Deadline";
+    }
+
+    td:nth-of-type(5):before {
+        content: "Status";
+    }
+
+    .viewHistoryBtn {
+        padding: 8px 20px;
+        font-size: 0.85rem;
+    }
+
+    footer {
+        padding: 5px 0;
+        font-size: 0.7rem;
+        gap: 5px;
+    }
+}
